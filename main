@@ -1,0 +1,358 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <conio.h>
+#include <locale.h>
+
+/*
+ ** Autor: Epifânio Francisco
+ ** Data: 06/03/2020
+ ** Função: COnverter a moeda Kwanza em outras moedas Internacionais
+*/
+
+//prototipo
+void info(int x);
+float convertAOA_USD(float valor, int escolha);
+float convertAOA_EUR(float valor, int escolha);
+float convertAOA_RS(float valor, int escolha);
+float convertAOA_LB(float valor, int escolha);
+float convertAOA_BTC(float valor, int escolha);
+
+int main()
+{
+	int escolha;
+	float valor;
+	char op[4];
+	
+	setlocale (LC_ALL,"portuguese");
+
+	do	
+	{
+		system ("color A");
+		system("cls");
+		printf("Quer Converter?\n\"Sim\" ou \"Não\"?\n R= ");
+		scanf("%s", op);
+		if (strcmp(strlwr(op), "nao") == 0)
+		{
+			break;
+		}
+		else if (strcmp(strlwr(op), "sim") == 0)
+		{
+			system ("color A");
+			system("cls");
+			info(1);
+			fflush(stdin);
+			scanf(" %d", &escolha);
+			system("cls");
+			switch (escolha)
+			{
+				case 1:
+				{
+					
+					info(2);
+					scanf(" %d", &escolha);
+					system("cls");
+					if (escolha == 1)
+					{
+						system ("color E");
+						printf("\n - - - || DOLAR PARA KWANZA || - - -\n"
+								"\nDigite um valor em Dolar = ");
+						scanf(" %f", &valor);
+						
+						printf("\nIsso equivale a = %.2f kz(AOA)\n", convertAOA_USD(valor, escolha));					
+					}
+					else if (escolha == 2)
+					{
+						system ("color 6");
+						printf("\n - - - || KWANZA PARA DOLAR || - - -\n"
+								"\nDigite um valor em Kwanza = ");
+						scanf(" %f", &valor);
+						printf("\nIsso equivale a = %.2f dolares(USD)\n", convertAOA_USD(valor, escolha));
+					}
+					getch(); // ou system("pause");
+				}
+				break;
+				case 2:
+				{
+					info(3);
+					scanf(" %d", &escolha);
+					system("cls");
+					if (escolha == 1)
+					{
+						system ("color B");
+						printf("\n - - - || EURO PARA KWANZA || - - -\n"
+							"\nDigite um valor em Euro = ");
+						scanf("%f", &valor);
+						printf("\nIsso equivale a = %.2f kz(AOA)\n", convertAOA_EUR(valor, escolha));
+					}
+					else if (escolha == 2)
+					{
+						system ("color 9");
+						printf("\n - - - || KWANZA PARA EURO || - - -\n"
+							"\nDigite um valor em Kwanza = ");
+						scanf(" %f", &valor);
+						printf("\nIsso equivale a = %.2f euros(EUR)\n", convertAOA_EUR(valor, escolha));
+					}
+					getch(); // ou system("pause");
+					break;
+				}
+				case 3:
+				{
+					info(4);
+					scanf(" %d", &escolha);
+					system("cls");
+					if (escolha == 1)
+					{
+						system ("color c");
+						printf("\n - - - || REAIS PARA KWANZA || - - -\n"
+								"\nDigite um valor em Reais = ");
+						scanf(" %f", &valor);
+						
+						printf("\nIsso equivale a = %.2f kz(AOA)\n", convertAOA_RS(valor, escolha));
+						
+					}
+					else if (escolha == 2)
+					{
+						system ("color 4");
+						printf("\n - - - || KWANZA PARA REAIS || - - -\n"
+								"\nDigite um valor em kwanza = ");
+						scanf(" %f", &valor);
+						printf("\nIsso equivale a = %.2f Reais(RS)\n", convertAOA_RS(valor, escolha));
+					}
+					getch(); // ou system("pause");
+				}
+				break;
+				case 4:
+				{
+					
+					info(5);
+					scanf(" %d", &escolha);
+					system("cls");
+					if (escolha == 1)
+					{
+						system ("color 3");
+						printf("\n - - - || LIBRA PARA KWANZA || - - -\n"
+								"\nDigite um valor em Libra = ");
+						scanf(" %f", &valor);
+						
+						printf("\nIsso equivale a = %.2f kz(AOA)\n", convertAOA_LB(valor, escolha));	
+					}
+					else if (escolha == 2)
+					{
+						system ("color 2");
+						printf("\n - - - || KWANZA PARA LIBRA || - - -\n"
+								"\nDigite um valor em kwanza = ");
+						scanf(" %f", &valor);
+						printf("\nIsso equivale a = %.2f Libra(LB)\n", convertAOA_LB(valor, escolha));
+					}
+					getch(); // ou system("pause");
+				}
+				break;
+				case 5:
+				{	
+					info(6);
+					scanf(" %d", &escolha);
+					system("cls");
+					if (escolha == 1)
+					{
+						system ("color 0");
+						printf("\n - - - || BITCOIN PARA KWANZA || - - -\n"
+								"\nDigite um valor em Bitcoin = ");
+						scanf(" %f", &valor);
+						
+						printf("\nIsso equivale a = %.2f kz(AOA)\n", convertAOA_BTC(valor, escolha));	
+					}
+					else if (escolha == 2)
+					{
+						system ("color 0");
+						printf("\n - - - || KWANZA PARA BITCOIN || - - -\n"
+								"\nDigite um valor em kwanza = ");
+						scanf(" %f", &valor);
+						printf("\nIsso equivale a = %.2f Bitcoin(BTC)\n", convertAOA_BTC(valor, escolha));
+					}
+					getch(); // ou system("pause");
+				}
+				break;
+				case 6:
+				{
+					break;
+				}
+				default:
+				{
+					system("cls");
+					printf("\n OPÇÃO INVALIDA! "
+							"\n TENTE NOVAMENTE = ENTER ");
+					getch(); // ou system("pause");
+				}
+			}
+		}
+		else
+		{
+			printf("OPÇÃO ERRADA! TENTE NOVAMENTE \n R= ");
+			getch();
+			main();
+		}
+
+	} while (escolha != 5);
+
+	system("cls");
+	printf( "\n - - - - - - - - - - - - - - - - - - - - - - "
+			"\n| O B R I G A D O  E  V O L T E  S E M P R E |"
+			"\n - - - - - - - - - - - - - - - - - - - - - - "
+			"\n             EPIFÂNIO FRANCISCO               ");
+			
+	getch(); // ou system("pause");
+
+	return 0;
+}
+
+//declaração das funções
+void info(int x)
+{
+	if (x == 1)
+	{
+		printf(
+			" \n                   A C E D E                "
+			" \n| - - - - - - - - - - - - - - - - - - - - -|"
+			" \n              B E M   V I N D O             "
+			" \n| - - - - - - - - - - - - - - - - - - - - -|"
+			" \nCONVERSÃO DE KWANZA PARA MOEDAS INTERNACIONAS"
+			" \n| - - - - - - - - - -||- - - - - - - - - - | "
+			" \n|      M O E D A S   ||     V A L O R      | "
+			" \n| - - - - - - - - - -||- - - - - - - - - - | "
+			" \n| 1- DOLAR <-> USD   ||    560.00 AOA      | "
+			" \n| 2- EURO  <-> EUR   ||    606.95 AOA      | "
+			" \n| 3- REAL  <-> RS    ||    105.33 AOA      | "
+			" \n| 4- LIBRA <-> LB    ||    690.86 AOA      | "
+			" \n| 5- BITCOIN <-> BTC ||   3.806.633,60 AOA | "
+			" \n| 6- SAIR  <->       ||                    | "   
+			" \n| - - - - - - - - - -||- - - - - - - - - - | \n"
+			"\nDigite um número para conversão a sua escolha: ");
+	}
+	else if (x == 2)
+	{
+		printf(
+			"\n| - - - - - - - - - - - - - - - - - -|"
+			"\n|        VOCÊ ESCOLHEU DOLAR         |"
+			"\n| - - - - - - - - - - - - - - - - - -|"
+			"\n| 1- CONVER. DE DOLAR PARA KWANZA    |"
+			"\n| 2- CONVER. DE KWANZA PARA DOLAR    |\n"
+			"\nDigte sua escolha de acordo com a tabela a cima ou 3 para sair do programa: ");
+	}
+	else if (x == 3)
+	{
+		printf(
+			"\n| - - - - - - - - - - - - - - - - - |"
+			"\n|        VOCÊ ESCOLHEU EURO         |"
+			"\n| - - - - - - - - - - - - - - - - - |"
+			"\n| 1- CONVER. DE EURO PARA KWANZA    |"
+			"\n| 2- CONVER. DE KWANZA PARA EURO    |\n"
+			"\nDigte sua escolha de acordo com a tabela a cima ou 3 para sair do programa: ");
+	}
+	else if (x == 4)
+	{
+		printf (
+			"\n| - - - - - - - - - - - - - - - - - |"
+			"\n|        VOCÊ ESCOLHEU REAL         |"
+			"\n| - - - - - - - - - - - - - - - - - |"
+			"\n| 1- CONVER. DE REAL  PARA KWANZA   |"
+			"\n| 2- CONVER. DE KWANZA PARA REAL    |\n"
+			"\nDigte sua escolha de acordo com a tabela a cima ou 3 para sair do programa: ");
+	}
+	else if (x == 5)
+	{
+		printf (
+			"\n| - - - - - - - - - - - - - - - - - |"
+			"\n|        VOCÊ ESCOLHEU LIBRA         |"
+			"\n| - - - - - - - - - - - - - - - - - |"
+			"\n| 1- CONVER. DE LIBRA  PARA KWANZA   |"
+			"\n| 2- CONVER. DE KWANZA PARA LIBRA    |\n"
+			"\nDigte sua escolha de acordo com a tabela a cima ou 3 para sair do programa: ");
+	}
+	else if (x == 6)
+	{
+		printf (
+			"\n| - - - - - - - - - - - - - - - - - |"
+			"\n|        VOCÊ ESCOLHEU BITCOIN      |"
+			"\n| - - - - - - - - - - - - - - - - - |"
+			"\n| 1- CONVER. DE BTC  PARA KWANZA    |"
+			"\n| 2- CONVER. DE KWANZA PARA BTC     |\n"
+			"\nDigte sua escolha de acordo com a tabela a cima ou 3 para sair do programa: ");
+	}
+}
+
+float convertAOA_USD(float valor, int escolha)
+{
+	float res;
+	// 1 - dollar para kwanza
+	// 2 - kwanza para dollar
+	if (escolha == 1)
+	{
+		res = (valor * 560.00);
+	}
+	else if (escolha == 2)
+	{
+		res = (valor * 0.0018);
+	}
+	return res;
+}
+float convertAOA_EUR(float valor, int escolha)
+{
+	float res;
+	// 1 - euro para kwanza
+	// 2 - kwanza para euro
+	if (escolha == 1)
+	{
+		res = (valor * 606.65);
+	}
+	else if (escolha == 2)
+	{
+		res = (valor * 0.0016);
+	}
+	return res;
+}
+float convertAOA_RS(float valor, int escolha)
+{
+	float res;
+	// 1 - 	Reais para kwanza
+	// 2 - kwanza para reais
+	if (escolha == 1)
+	{
+		res = (valor * 105.31);
+	}
+	else if (escolha == 2)
+	{
+		res = (valor * 0.0095);
+	}
+	return res;
+}
+float convertAOA_LB(float valor, int escolha)
+{
+	float res;
+	// 1 - Libra para kwanza
+	// 2 - kwanza para libra
+	if (escolha == 1)
+	{
+		res = (valor * 690.86);
+	}
+	else if (escolha == 2)
+	{
+		res = (valor * 0.0014);
+	}
+	return res;
+}
+float convertAOA_BTC(float valor, int escolha)
+{
+	float res;
+	// 1 - Bitcoin para kwanza
+	// 2 - kwanza para bitcoin
+	if (escolha == 1)
+	{
+		res = (valor * 3806633.60);
+	}
+	else if (escolha == 2)
+	{
+		res = (valor * 0.00000026);
+	}
+	return res;
+}
